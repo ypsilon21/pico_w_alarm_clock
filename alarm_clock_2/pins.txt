@@ -1,0 +1,41 @@
+1:  GPIO 0 / Button 1
+2:  GPIO 1 / Button 2
+3:  GRND
+4:  GPIO 2 / Button 3
+5:  GPIO 3 / Button 4
+6:  I2C0 SDA
+7:  I2C0 SCL
+8:  GRND
+9:
+10:
+11:
+12:
+13: GRND
+14:
+15:
+16:
+17:
+18: GRND
+19:
+20: GPIO 15 / extern LED
+
+21:
+22:
+23: GRND
+24:
+25:
+26:
+27:
+28: GRND
+29:
+30:
+31:
+32:
+33: GRND
+34:
+35:
+36:
+37:
+38: GRND
+39:
+40: VBUS / LCD VCC
