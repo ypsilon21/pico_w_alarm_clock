@@ -117,18 +117,7 @@ void lcd_writeStr(const char *str){
 
 //writes an Ascii character to the display based on the numerical value given
 void lcd_writeAscii(uint8_t val){
-    if(field == 0 && row == 0) lcd_clear();
-
-    lcd_send_byte(val, true); //writes onto the lcd
-
-    //updates cursor
-    field++;
-    if(field == 16){
-        field = 0;
-        if(row == 0) row++;
-        else row--;
-    }
-    lcd_setCursor(field, row);
+    lcd_writeChar((char) val);
 }
 
 //changes cursor to line 1
