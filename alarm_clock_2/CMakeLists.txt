@@ -42,6 +42,8 @@ add_executable(alarm_clock_2
     lcd_driver.c
     audio_driver.c
     music_module.c
+    music_player.c
+    os_util.c
     )
 
 pico_set_program_name(alarm_clock_2 "alarm_clock_2")

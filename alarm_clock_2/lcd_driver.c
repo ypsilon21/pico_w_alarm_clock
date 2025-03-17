@@ -120,6 +120,13 @@ void lcd_writeAscii(uint8_t val){
     lcd_writeChar((char) val);
 }
 
+//writes a number to the display
+void lcd_writeInt(uint32_t n){
+    char str[10];
+    sprintf(str, "%d", n);
+    lcd_writeStr(str);
+}
+
 //changes cursor to line 1
 void lcd_line1(){
     lcd_setCursor(0, 0);

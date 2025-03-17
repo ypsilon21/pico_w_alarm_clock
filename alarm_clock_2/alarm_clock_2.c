@@ -7,6 +7,7 @@
 #include "lcd_driver.h"
 #include "audio_driver.h"
 #include "music_module.h"
+#include "os_util.h"
 
 int main()
 {
@@ -21,13 +22,19 @@ int main()
     // Example to turn on the Pico W LED
     cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
 
-    lcd_init();
-    lcd_writeStr("hallo :3");
-
     led_init();
+    buttons_init();
     audio_init();
 
-    music_setVolume(50);
+    lcd_init();
+    lcd_writeStr("hallo :3");
+    sleep_ms(1000);
+
+    put_error("error");
+    put_logInt(34285);
+    put_logStr("log lol");
+
+    music_setVolume(70);
     music_setTempo(130);
 
     while(1){
@@ -59,7 +66,6 @@ int main()
         music_playNote(BREAK, WHL);
     }
 
-    buttons_init();
     while(1){
         buttons_waitForInput();
         for(uint8_t i = 0; i < 4; i++){

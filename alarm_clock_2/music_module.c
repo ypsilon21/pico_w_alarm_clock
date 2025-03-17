@@ -95,7 +95,7 @@ void music_playNote_customLength(Note note, float length){
         audio_set_frequency(noteToFrequency(note));
 
         uint32_t quarterMs = (60 * 1000) / tempo;
-        uint32_t len = (uint32_t) ((float) quarterMs) / length;
+        uint32_t len = (uint32_t) ((float) quarterMs) * length;
         sleep_ms(len - NOTE_COOLDOWN);
         audio_set_dutyCycle(0);
         sleep_ms(NOTE_COOLDOWN);

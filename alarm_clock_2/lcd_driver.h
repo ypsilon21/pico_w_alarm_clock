@@ -6,9 +6,10 @@
 //to initialise the lcd + the i2c
 void lcd_init();
 
-//to write Strings, Chars or Ascii Characters (by Ascii value)
+//to write Strings, Chars, Numbers or Ascii Characters (by Ascii value)
 void lcd_writeStr(const char *str);
 void lcd_writeChar(char c);
+void lcd_writeInt(uint32_t n);
 void lcd_writeAscii(uint8_t val);
 
 //sets and gets cursor

@@ -27,6 +27,7 @@ uint8_t buttons_getValues(){
 void buttons_waitForInput(){
     while(buttons_getValues() == 0){};
 }
+
 void buttons_waitForNoInput(){
     while(buttons_getValues() != 0){};
 }
