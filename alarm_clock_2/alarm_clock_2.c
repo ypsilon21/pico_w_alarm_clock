@@ -6,6 +6,7 @@
 #include "button_driver.h"
 #include "lcd_driver.h"
 #include "audio_driver.h"
+#include "music_module.h"
 
 int main()
 {
@@ -26,8 +27,37 @@ int main()
     led_init();
     audio_init();
 
-    float dutyCycle = 10;
-    pwm_pulse(dutyCycle);
+    music_setVolume(50);
+    music_setTempo(130);
+
+    while(1){
+        music_playNote(C3, QUA);
+        music_playNote(D3, QUA);
+        music_playNote(E3, QUA);
+        music_playNote(F3, QUA);
+        music_playNote(G3, HAL);
+        music_playNote(G3, HAL);
+        for(uint8_t i = 0; i < 2; i++){
+            music_playNote(A3, QUA);
+            music_playNote(A3, QUA);
+            music_playNote(A3, QUA);
+            music_playNote(A3, QUA);
+            music_playNote(G3, HAL_);
+        }
+        music_playNote(F3, QUA);
+        music_playNote(F3, QUA);
+        music_playNote(F3, QUA);
+        music_playNote(F3, QUA);
+        music_playNote(E3, HAL);
+        music_playNote(E3, HAL);
+        music_playNote(G3, QUA);
+        music_playNote(G3, QUA);
+        music_playNote(G3, QUA);
+        music_playNote(G3, QUA);
+        music_playNote(C3, HAL);
+
+        music_playNote(BREAK, WHL);
+    }
 
     buttons_init();
     while(1){
@@ -35,9 +65,7 @@ int main()
         for(uint8_t i = 0; i < 4; i++){
             if(buttons_getButtonVal(i)){
                 lcd_clear();
-                if(i == 0) dutyCycle -= 10.0f;
-                else if(i == 1) dutyCycle += 10.0f;
-                pwm_pulse(dutyCycle);
+                lcd_writeChar('0' + (char) i);
                 //led_blink(140, i + 1);
                 buttons_waitForNoInput();
                 lcd_clear();
