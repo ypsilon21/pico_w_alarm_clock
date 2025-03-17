@@ -30,11 +30,7 @@ int main()
     lcd_writeStr("hallo :3");
     sleep_ms(1000);
 
-    put_error("error");
-    put_logInt(34285);
-    put_logStr("log lol");
-
-    music_setVolume(70);
+    music_setVolume(50);
     music_setTempo(130);
 
     while(1){

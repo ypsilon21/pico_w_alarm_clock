@@ -78,9 +78,8 @@ uint32_t noteLenghtToMs(NoteLength length){
 void music_playNote(Note note, NoteLength length){
     if(note != BREAK){
         audio_set_dutyCycle(volume);
-        audio_set_frequency(noteToFrequency(note));
+        audio_play_frequency(noteToFrequency(note), noteLenghtToMs(length) - NOTE_COOLDOWN, volume);
 
-        sleep_ms(noteLenghtToMs(length) - NOTE_COOLDOWN);
         audio_set_dutyCycle(0);
         sleep_ms(NOTE_COOLDOWN);
     }
@@ -92,11 +91,11 @@ void music_playNote(Note note, NoteLength length){
 void music_playNote_customLength(Note note, float length){
     if(note != BREAK){
         audio_set_dutyCycle(volume);
-        audio_set_frequency(noteToFrequency(note));
 
         uint32_t quarterMs = (60 * 1000) / tempo;
         uint32_t len = (uint32_t) ((float) quarterMs) * length;
-        sleep_ms(len - NOTE_COOLDOWN);
+        audio_play_frequency(noteToFrequency(note), noteLenghtToMs(length) - NOTE_COOLDOWN, volume);
+
         audio_set_dutyCycle(0);
         sleep_ms(NOTE_COOLDOWN);
     }

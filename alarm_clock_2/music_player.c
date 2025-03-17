@@ -6,11 +6,11 @@
 #include "music_module.h"
 
 Note convert_bsnf_to_note(char note, uint8_t octave){
-    
+    return C3;
 }
 
 NoteLength convert_bsnf_to_length(uint8_t length){
-    
+    return QUA;
 }
 
 void music_file_play(char* path){
@@ -28,7 +28,7 @@ void music_file_play(char* path){
     Note note;
     NoteLength length;
     while (fread(&block, 4, 1, song) == 1) { 
-        if(block[3] != ' '){
+        if(!(block[3] == ' ' || block[3] == '\n')){
             put_error("wrong formatting in .bsnf file");
             return;
         }
